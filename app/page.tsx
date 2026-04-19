@@ -49,23 +49,22 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Stats strip */}
-        <div className="absolute bottom-0 inset-x-0 z-10 hidden lg:block">
-          <div className="mx-auto max-w-screen-3xl px-10">
-            <div className="grid grid-cols-4 bg-paper border-t border-x border-ink/10 rounded-t-2xl shadow-card">
-              {stats.map((s, i) => (
-                <div key={s.label} className={`px-7 py-6 ${i > 0 ? "border-l border-ink/10" : ""}`}>
-                  <p className="font-display font-bold text-[1.9rem] leading-none tabnum">{s.value}</p>
-                  <p className="mt-1.5 text-[12px] text-ink/60 uppercase tracking-[0.14em]">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
+      {/* Stats strip — chevauche la limite hero/contenu */}
+      <div className="relative z-20 -mt-12 lg:-mt-16 mx-auto max-w-screen-3xl px-5 lg:px-10 hidden lg:block">
+        <div className="grid grid-cols-4 bg-paper border border-ink/10 rounded-2xl shadow-cardHover overflow-hidden">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`px-7 py-7 ${i > 0 ? "border-l border-ink/10" : ""}`}>
+              <p className="font-display font-bold text-[1.9rem] leading-none tabnum">{s.value}</p>
+              <p className="mt-1.5 text-[12px] text-ink/60 uppercase tracking-[0.14em]">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* DOMAINES */}
-      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 pt-20 lg:pt-28 pb-16">
+      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 pt-14 lg:pt-20 pb-16">
         <div className="grid grid-cols-12 gap-8 mb-10 lg:mb-14">
           <div className="col-span-12 lg:col-span-7">
             <p className="eyebrow">Nos domaines de prédilection</p>

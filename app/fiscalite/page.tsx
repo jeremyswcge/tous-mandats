@@ -8,7 +8,7 @@ export default function FiscalitePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[52vh] min-h-[420px] max-h-[600px] overflow-hidden">
+      <section className="relative h-[58vh] min-h-[500px] max-h-[640px] overflow-hidden">
         <Image src={media.contact} alt="Genève" fill priority className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 hero-overlay" />
         <div className="relative z-10 h-full mx-auto max-w-screen-3xl px-5 lg:px-10 flex flex-col justify-end pb-14">

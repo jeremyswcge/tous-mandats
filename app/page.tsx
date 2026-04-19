@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO — full-width photo + tagline + CTA */}
-      <section className="relative h-[78vh] min-h-[560px] max-h-[820px] overflow-hidden">
+      <section className="relative h-[calc(100vh-72px)] min-h-[720px] max-h-[880px] overflow-hidden">
         <Image
           src={media.hero}
           alt="Villa moderne à Genève"

@@ -10,29 +10,30 @@ const links = [
 
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-bone/80 border-b border-ink/10">
-      <div className="mx-auto max-w-screen-3xl px-6 lg:px-12 h-20 flex items-center justify-between gap-8">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-paper/85 border-b border-ink/10">
+      <div className="mx-auto max-w-screen-3xl px-5 lg:px-10 h-[72px] flex items-center justify-between gap-8">
         <Logo />
-        <nav className="hidden md:flex items-center gap-9 font-sans text-[14px]">
+        <nav className="hidden md:flex items-center gap-8 font-sans text-[14px] font-medium">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="link tracking-wide">
+            <Link key={l.href} href={l.href} className="link tracking-tight text-ink/85 hover:text-ink transition">
               {l.label}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
             href="tel:+41786042503"
-            className="hidden sm:inline font-mono text-[11px] tracking-[0.18em] uppercase text-ink/70 hover:text-ink transition"
+            className="hidden sm:inline-flex items-center gap-2 font-sans text-[13px] text-ink/70 hover:text-ink transition"
           >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-orange" />
             +41 78 604 25 03
           </a>
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-ink px-4 py-2 text-[12px] font-sans tracking-[0.18em] uppercase hover:bg-ink hover:text-bone transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-paper hover:bg-orange transition-colors"
           >
-            Prendre RDV
-            <span className="inline-block translate-y-[1px] transition-transform group-hover:translate-x-0.5">→</span>
+            Contactez-nous
+            <span className="transition-transform">→</span>
           </Link>
         </div>
       </div>

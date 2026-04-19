@@ -3,7 +3,6 @@ export const company = {
   tagline: "Fiscalité · Immobilier · Gestion administrative",
   promise: "Optimisez votre fiscalité, gérez vos démarches, valorisez votre patrimoine.",
   city: "Genève (Perly)",
-  founded: "Cabinet genevois indépendant",
   phones: ["+41 78 604 25 03", "+41 78 806 84 81"],
   email: "info@tous-mandats.ch",
   address: {
@@ -47,53 +46,40 @@ export const team = [
 ];
 
 export const services = [
+  { icon: "tax", title: "Déclarations fiscales", body: "Particuliers et entreprises — Genève et tous cantons." },
+  { icon: "house", title: "Fiscalité immobilière", body: "IBGI, gain immobilier, durée de détention, opposition AFCI." },
+  { icon: "land", title: "Taxe LALAT", body: "Déclassement de terrain, calcul, négociation et représentation." },
+  { icon: "building", title: "Comptabilité d'entreprise", body: "Tenue, bouclement, TVA, acomptes, gouvernance financière." },
+  { icon: "key", title: "Courtage hypothécaire", body: "Mise en concurrence, prêts, refinancement, amortissement." },
+  { icon: "exchange", title: "Transaction immobilière", body: "Achat et vente — appui stratégique de bout en bout." },
+  { icon: "calendar", title: "Gestion locative", body: "Baux, indexations, conformité, litiges, régies & locataires." },
+  { icon: "scroll", title: "Succession & donation", body: "Préparation patrimoniale, transmission, coordination notaires." },
+];
+
+export const transactions = [
   {
-    n: "01",
-    title: "Déclarations fiscales",
-    body: "Particuliers et entreprises — Genève et tous cantons. Déductions, prévoyance, quasi-résidence, contrôle.",
+    label: "Acheter",
+    body: "Recherche ciblée, analyse fiscale et négociation. Vous achetez en sachant exactement ce que vous payez.",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    href: "/contact",
   },
   {
-    n: "02",
-    title: "Fiscalité immobilière",
-    body: "IBGI, gain immobilier, durée de détention, opposition AFCI, ruling avant compromis.",
+    label: "Vendre",
+    body: "Estimation, optimisation du gain immobilier, mise en marché. Une vente bien préparée, c'est moins d'impôt.",
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80",
+    href: "/contact",
   },
   {
-    n: "03",
-    title: "Taxe LALAT",
-    body: "Déclassement de terrain, calcul d'impact, négociation et représentation devant les autorités genevoises.",
-  },
-  {
-    n: "04",
-    title: "Comptabilité d'entreprise",
-    body: "Tenue de comptes, bouclement, TVA, acomptes, gouvernance financière des sociétés patrimoniales.",
-  },
-  {
-    n: "05",
-    title: "Courtage hypothécaire",
-    body: "Mise en concurrence des établissements, prêts, refinancement, structuration de l'amortissement.",
-  },
-  {
-    n: "06",
-    title: "Transaction immobilière",
-    body: "Achat et vente — appui stratégique de bout en bout, du dossier à l'acte notarié.",
-  },
-  {
-    n: "07",
-    title: "Gestion locative",
-    body: "Baux, indexations, conformité, litiges, relations régies & locataires. Gestion de A à Z.",
-  },
-  {
-    n: "08",
-    title: "Succession & donation",
-    body: "Préparation patrimoniale, transmission de biens, coordination notaires et autorités fiscales.",
+    label: "Louer",
+    body: "Mise en location, sélection des candidats, rédaction des baux. Conformité genevoise garantie.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    href: "/contact",
   },
 ];
 
 export const fiscalSegments = [
   {
     label: "Particuliers",
-    n: "I",
-    color: "ink",
     items: [
       "Déclarations fiscales à Genève",
       "Déductions et prévoyance (3e pilier, transport)",
@@ -104,8 +90,6 @@ export const fiscalSegments = [
   },
   {
     label: "Entreprises",
-    n: "II",
-    color: "verdigris",
     items: [
       "Déclarations sociétés & indépendants",
       "Rémunération, dividendes, frais déductibles",
@@ -116,8 +100,6 @@ export const fiscalSegments = [
   },
   {
     label: "Immobilier",
-    n: "III",
-    color: "copper",
     items: [
       "Impôt sur le gain immobilier (IBGI)",
       "Achat, vente, location, détention",
@@ -141,7 +123,7 @@ export const expertises = [
   },
   {
     title: "Optimisation de la détention immobilière",
-    code: "OPT",
+    code: "Détention",
     points: [
       "Analyse des revenus locatifs imposables",
       "Déductions des intérêts, travaux, charges réelles",
@@ -150,7 +132,7 @@ export const expertises = [
   },
   {
     title: "Avant achat, vente, transmission",
-    code: "TRX",
+    code: "Conseil",
     points: [
       "Simulation d'impact fiscal",
       "Préparation à la succession ou donation",
@@ -177,28 +159,11 @@ export const properties = [
       { label: "Villa 2", habitable: 140, jardin: 425 },
     ],
     layout: {
-      ground: [
-        "Hall d'entrée",
-        "Salle de bain douche",
-        "Séjour 36 m²",
-        "Cuisine ouverte",
-        "Réduit / buanderie",
-      ],
-      first: [
-        "3 chambres à coucher",
-        "1 grande chambre parentale",
-        "Salle de bain avec baignoire",
-      ],
-      outside: [
-        "Jardin avec terrasse dallée",
-        "1 place de parc",
-        "1 couvert à voiture",
-      ],
+      ground: ["Hall d'entrée", "Salle de bain douche", "Séjour 36 m²", "Cuisine ouverte", "Réduit / buanderie"],
+      first: ["3 chambres à coucher", "1 grande chambre parentale", "Salle de bain avec baignoire"],
+      outside: ["Jardin avec terrasse dallée", "1 place de parc", "1 couvert à voiture"],
     },
-    info: {
-      construction: "Neuve et de qualité",
-      heating: "Pompe à chaleur air/eau",
-    },
+    info: { construction: "Neuve et de qualité", heating: "Pompe à chaleur air/eau" },
     features: ["Balcon", "Bibliothèque", "Buanderie"],
     images: [
       "https://tous-mandats.ch/wp-content/uploads/2024/06/stc3.png",
@@ -210,40 +175,31 @@ export const properties = [
 ];
 
 export const propertyTypes = [
-  { name: "Villa moderne", count: 1, slug: "villa-moderne" },
-  { name: "Maison familiale", count: 0, slug: "maison-familiale" },
-  { name: "Appartement", count: 0, slug: "appartement" },
-  { name: "Maison de ville", count: 0, slug: "maison-de-ville" },
-  { name: "Copropriété", count: 0, slug: "copropriete" },
-  { name: "Maison de ferme", count: 0, slug: "maison-de-ferme" },
+  { name: "Villa moderne", count: 1, slug: "villa-moderne", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=75" },
+  { name: "Maison familiale", count: 0, slug: "maison-familiale", image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=75" },
+  { name: "Appartement", count: 0, slug: "appartement", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=75" },
+  { name: "Maison de ville", count: 0, slug: "maison-de-ville", image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=800&q=75" },
+  { name: "Copropriété", count: 0, slug: "copropriete", image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=75" },
+  { name: "Maison de ferme", count: 0, slug: "maison-de-ferme", image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=75" },
 ];
 
 export const stats = [
-  { value: "20+", label: "années d'expérience cumulées" },
-  { value: "100%", label: "dossiers fiscaux suisses" },
-  { value: "GE", label: "spécialistes du droit genevois" },
-  { value: "1258", label: "Perly · canton de Genève" },
+  { value: "20+", label: "années d'expérience" },
+  { value: "100%", label: "dossiers suisses" },
+  { value: "GE", label: "spécialistes droit genevois" },
+  { value: "24h", label: "délai de réponse" },
 ];
 
 export const principles = [
-  {
-    n: "I",
-    title: "Conseil stratégique",
-    body: "Chaque dossier est traité à la mesure du patrimoine — jamais au volume.",
-  },
-  {
-    n: "II",
-    title: "Langage clair",
-    body: "Pas de jargon technique. Vous comprenez ce que vous signez.",
-  },
-  {
-    n: "III",
-    title: "Rigueur d'exécution",
-    body: "Les démarches sont menées au calendrier — pas après.",
-  },
-  {
-    n: "IV",
-    title: "Jusqu'au dernier centime",
-    body: "Optimisation fiscale conduite jusqu'à son terme légal.",
-  },
+  { title: "Conseil stratégique et personnalisé", body: "Chaque dossier est traité à la mesure du patrimoine — jamais au volume." },
+  { title: "Communication claire, sans jargon", body: "Vous comprenez ce que vous signez, étape par étape." },
+  { title: "Gestion rigoureuse des démarches", body: "Les échéances fiscales sont anticipées, jamais subies." },
+  { title: "Maîtrise du projet jusqu'au dernier centime", body: "Optimisation fiscale conduite jusqu'à son terme légal." },
 ];
+
+// Hero / about images
+export const media = {
+  hero: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80",
+  about: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1400&q=80",
+  contact: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1600&q=80",
+};

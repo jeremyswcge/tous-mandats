@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Manrope, JetBrains_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  axes: ["opsz", "SOFT", "WONK"],
-  display: "swap",
-});
-
 const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const display = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -33,8 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://tous-mandats.ch"),
   openGraph: {
     title: "Tous Mandats — Fiscalité immobilière à Genève",
-    description:
-      "Optimisez votre fiscalité, gérez vos démarches, valorisez votre patrimoine.",
+    description: "Optimisez votre fiscalité, gérez vos démarches, valorisez votre patrimoine.",
     locale: "fr_CH",
     type: "website",
   },
@@ -43,7 +42,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
-      <body className="font-sans bg-bone text-ink min-h-screen flex flex-col grain">
+      <body className="font-sans bg-paper text-ink min-h-screen flex flex-col">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { properties } from "@/lib/data";
-import SectionLabel from "@/components/SectionLabel";
 
 export function generateStaticParams() {
   return properties.map((p) => ({ slug: p.slug }));
@@ -22,162 +21,161 @@ export default function PropertyPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      {/* HERO */}
-      <section className="mx-auto max-w-screen-3xl px-6 lg:px-12 pt-12">
-        <Link href="/immobilier" className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/60 link">
-          ← Retour aux biens
-        </Link>
+      {/* TOP BAR */}
+      <section className="bg-paper-50 border-b border-ink/10">
+        <div className="mx-auto max-w-screen-3xl px-5 lg:px-10 py-6 flex items-center justify-between">
+          <Link href="/immobilier" className="text-[13px] font-medium text-ink/70 hover:text-ink transition">
+            ← Retour aux biens
+          </Link>
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55">
+            Réf · {p.slug}
+          </span>
+        </div>
+      </section>
 
-        <div className="mt-10 grid grid-cols-12 gap-8 items-end">
+      {/* HEADER */}
+      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 pt-10">
+        <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 lg:col-span-8">
-            <SectionLabel number={`№ ${String(1).padStart(2, "0")}`} label={`${p.type} · ${p.location}`} />
-            <h1 className="mt-6 font-display text-[clamp(2.6rem,7vw,7rem)] leading-[0.9] tracking-tightest">
-              {p.title.split(" ").slice(0, -1).join(" ")} <br />
-              <span className="italic-display text-verdigris-600">{p.title.split(" ").slice(-1)}</span>
-            </h1>
-          </div>
-          <div className="col-span-12 lg:col-span-4 self-end">
-            <div className="border-t border-ink/15 pt-6 grid grid-cols-2 gap-y-6 gap-x-6">
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55">Prix</p>
-                <p className="mt-2 font-display text-[1.8rem] leading-none tab-num">
-                  CHF {p.priceCHF.toLocaleString("fr-CH")}
-                </p>
-              </div>
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55">CHF/m²</p>
-                <p className="mt-2 font-display text-[1.8rem] leading-none tab-num">{p.pricePerSqmCHF}</p>
-              </div>
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55">Habitable</p>
-                <p className="mt-2 font-display text-[1.8rem] leading-none tab-num">{totalHabitable} m²</p>
-              </div>
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55">Jardin</p>
-                <p className="mt-2 font-display text-[1.8rem] leading-none tab-num">{totalGarden} m²</p>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-orange px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-paper">{p.status}</span>
+              <span className="rounded-full bg-paper border border-ink/15 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-ink/70">{p.type}</span>
             </div>
+            <h1 className="mt-5 font-display font-bold text-[clamp(2.4rem,5vw,4rem)] leading-[1.02] tracking-tightest">{p.title}</h1>
+            <p className="mt-3 text-[15px] text-ink/65">{p.subtitle} · {p.location}</p>
+          </div>
+          <div className="col-span-12 lg:col-span-4 lg:text-right">
+            <p className="text-[12px] font-mono uppercase tracking-[0.18em] text-ink/55">Prix</p>
+            <p className="mt-1 font-display font-bold text-[clamp(2rem,3.5vw,2.8rem)] leading-none tabnum">CHF {p.priceCHF.toLocaleString("fr-CH")}</p>
+            <p className="mt-2 text-[13px] text-ink/60 tabnum">{p.pricePerSqmCHF} CHF / m²</p>
           </div>
         </div>
       </section>
 
       {/* GALLERY */}
-      <section className="mx-auto max-w-screen-3xl px-6 lg:px-12 mt-16">
-        <div className="grid grid-cols-12 gap-4">
-          <div className="relative col-span-12 lg:col-span-8 aspect-[16/10] rounded-2xl overflow-hidden bg-ink">
-            <Image src={p.images[0]} alt={p.title} fill className="object-cover" sizes="(min-width:1024px) 66vw, 100vw" />
+      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 mt-10">
+        <div className="grid grid-cols-12 gap-3">
+          <div className="col-span-12 lg:col-span-8 relative aspect-[16/10] rounded-2xl overflow-hidden bg-ink">
+            <Image src={p.images[0]} alt={p.title} fill className="object-cover" sizes="(min-width:1024px) 66vw, 100vw" priority />
           </div>
-          <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-4">
+          <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-3">
             {p.images.slice(1, 4).map((src, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-ink">
-                <Image src={src} alt={`${p.title} — vue ${i + 2}`} fill className="object-cover" sizes="(min-width:1024px) 33vw, 50vw" />
+                <Image src={src} alt={`${p.title} — ${i + 2}`} fill className="object-cover" sizes="(min-width:1024px) 33vw, 50vw" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* DETAILS */}
-      <section className="mx-auto max-w-screen-3xl px-6 lg:px-12 py-28 lg:py-36">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 lg:col-span-4">
-            <SectionLabel number="№ 02" label="Description" />
-            <p className="mt-6 font-display text-[clamp(1.8rem,2.7vw,2.4rem)] leading-tight tracking-tight">
-              Deux unités mitoyennes neuves, jardins privatifs, à signer{" "}
-              <span className="italic-display">au cœur de Genève.</span>
-            </p>
-            <ul className="mt-10 space-y-4 font-mono text-[12px] uppercase tracking-[0.16em]">
-              <li className="flex justify-between border-b border-ink/15 pb-3">
-                <span className="text-ink/55">Année de construction</span>
-                <span className="tab-num">{p.year}</span>
-              </li>
-              <li className="flex justify-between border-b border-ink/15 pb-3">
-                <span className="text-ink/55">Construction</span>
-                <span>{p.info.construction}</span>
-              </li>
-              <li className="flex justify-between border-b border-ink/15 pb-3">
-                <span className="text-ink/55">Chauffage</span>
-                <span>{p.info.heating}</span>
-              </li>
-              <li className="flex justify-between border-b border-ink/15 pb-3">
-                <span className="text-ink/55">Mandataire</span>
-                <span>{p.author}</span>
-              </li>
-            </ul>
-          </div>
+      {/* DETAILS GRID */}
+      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 py-20 lg:py-24">
+        <div className="grid grid-cols-12 gap-8 lg:gap-14">
+          {/* Left: spec sheet */}
+          <aside className="col-span-12 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+            <div className="rounded-2xl bg-paper-50 border border-ink/10 p-7">
+              <p className="eyebrow">Fiche technique</p>
+              <ul className="mt-5 divide-y divide-ink/10">
+                <Row label="Année" value={String(p.year)} />
+                <Row label="Construction" value={p.info.construction} />
+                <Row label="Chauffage" value={p.info.heating} />
+                <Row label="Surface habitable" value={`${totalHabitable} m²`} />
+                <Row label="Jardin" value={`${totalGarden} m²`} />
+                <Row label="Mandataire" value={p.author} />
+              </ul>
+              <Link href="/contact" className="mt-7 inline-flex w-full justify-center items-center gap-2 rounded-full bg-ink text-paper px-5 py-3 text-[13px] font-medium hover:bg-orange transition">
+                Demander une visite →
+              </Link>
+              <a href="tel:+41786042503" className="mt-3 block text-center text-[13px] text-ink/70 link">
+                +41 78 604 25 03
+              </a>
+            </div>
 
-          <div className="col-span-12 lg:col-span-7 lg:col-start-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { title: "Rez-de-chaussée", items: p.layout.ground, n: "I" },
-              { title: "1er étage", items: p.layout.first, n: "II" },
-              { title: "Extérieurs", items: p.layout.outside, n: "III" },
-            ].map((b) => (
-              <div key={b.n} className="rounded-2xl border border-ink/15 bg-bone-50 p-6 lg:p-8">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] tracking-[0.22em] text-ink/55">{b.n}</span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-copper" />
+            <div className="mt-4 rounded-2xl border border-ink/10 p-7">
+              <p className="eyebrow">Équipements</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {p.features.map((f) => (
+                  <li key={f} className="rounded-full border border-ink/15 px-3 py-1.5 text-[12px]">{f}</li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+
+          {/* Right: layout */}
+          <div className="col-span-12 lg:col-span-8 space-y-6">
+            <div>
+              <p className="eyebrow">Description</p>
+              <h2 className="mt-3 font-display font-bold text-[clamp(1.6rem,2.6vw,2.2rem)] leading-tight tracking-tight">
+                Deux unités mitoyennes neuves, jardins privatifs, à signer au cœur de Genève.
+              </h2>
+              <p className="mt-5 text-[15px] text-ink/75 leading-relaxed max-w-2xl">
+                Construction neuve à pompe à chaleur. Chaque villa offre une distribution
+                fonctionnelle sur deux niveaux, avec terrasse dallée, jardin privatif,
+                place de parc et couvert à voiture.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { title: "Rez-de-chaussée", items: p.layout.ground },
+                { title: "1er étage", items: p.layout.first },
+                { title: "Extérieurs", items: p.layout.outside },
+              ].map((b) => (
+                <div key={b.title} className="rounded-2xl border border-ink/10 p-6 bg-paper">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">{b.title}</p>
+                  <ul className="mt-4 space-y-2">
+                    {b.items.map((it) => (
+                      <li key={it} className="flex gap-2.5 text-[13.5px] text-ink/80 leading-relaxed">
+                        <span className="text-orange-600 mt-[3px]">·</span>
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="mt-6 font-display text-[1.4rem] leading-tight">{b.title}</h3>
-                <ul className="mt-5 space-y-2 text-[13.5px] leading-relaxed text-ink/80">
-                  {b.items.map((it) => (
-                    <li key={it} className="flex gap-2">
-                      <span className="text-copper-500">·</span>
-                      <span>{it}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              ))}
+            </div>
 
-            <div className="md:col-span-3 rounded-2xl border border-ink/15 p-6 lg:p-8">
+            <div className="rounded-2xl border border-ink/10 p-7 bg-paper">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[11px] tracking-[0.22em] text-ink/55">Surfaces</span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55">m²</span>
+                <p className="eyebrow">Surfaces</p>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/55">m²</span>
               </div>
-              <table className="mt-6 w-full text-[14px]">
+              <table className="mt-4 w-full text-[14px]">
                 <thead>
-                  <tr className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/55">
-                    <th className="text-left pb-3">Lot</th>
-                    <th className="text-right pb-3">Habitable</th>
-                    <th className="text-right pb-3">Jardin</th>
+                  <tr className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/55">
+                    <th className="text-left pb-3 font-medium">Lot</th>
+                    <th className="text-right pb-3 font-medium">Habitable</th>
+                    <th className="text-right pb-3 font-medium">Jardin</th>
                   </tr>
                 </thead>
                 <tbody>
                   {p.surfaces.map((s) => (
-                    <tr key={s.label} className="border-t border-ink/15">
-                      <td className="py-3 font-display text-[1.05rem]">{s.label}</td>
-                      <td className="py-3 text-right tab-num">{s.habitable}</td>
-                      <td className="py-3 text-right tab-num">{s.jardin}</td>
+                    <tr key={s.label} className="border-t border-ink/10">
+                      <td className="py-3 font-display font-semibold">{s.label}</td>
+                      <td className="py-3 text-right tabnum">{s.habitable}</td>
+                      <td className="py-3 text-right tabnum">{s.jardin}</td>
                     </tr>
                   ))}
+                  <tr className="border-t border-ink/10 bg-paper-50">
+                    <td className="py-3 font-display font-semibold">Total</td>
+                    <td className="py-3 text-right tabnum font-semibold">{totalHabitable}</td>
+                    <td className="py-3 text-right tabnum font-semibold">{totalGarden}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-screen-3xl px-6 lg:px-12 pb-32">
-        <div className="rounded-3xl bg-ink text-bone p-10 lg:p-16 grid grid-cols-12 gap-8 items-end">
-          <div className="col-span-12 lg:col-span-8">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone/55">
-              Visite & dossier complet
-            </p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.4rem)] leading-[0.95] tracking-tight">
-              Demander une visite — <span className="italic-display text-copper-400">{p.title.toLowerCase()}.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 rounded-full bg-bone text-ink px-6 py-3.5 text-[12px] font-sans tracking-[0.22em] uppercase hover:bg-copper-500 transition-colors"
-            >
-              Prendre contact <span>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
+  );
+}
+
+function Row({ label, value }: { label: string; value: string }) {
+  return (
+    <li className="py-3 flex items-center justify-between gap-4">
+      <span className="text-[12.5px] text-ink/60 uppercase tracking-[0.1em]">{label}</span>
+      <span className="text-[13.5px] font-medium text-right">{value}</span>
+    </li>
   );
 }

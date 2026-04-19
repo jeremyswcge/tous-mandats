@@ -1,103 +1,107 @@
 import Link from "next/link";
 import Image from "next/image";
 import { properties, propertyTypes } from "@/lib/data";
-import SectionLabel from "@/components/SectionLabel";
 
 export const metadata = { title: "Immobilier" };
 
 export default function ImmobilierPage() {
   return (
     <>
-      <section className="mx-auto max-w-screen-3xl px-6 lg:px-12 pt-20 pb-20">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 lg:col-span-9 reveal d1">
-            <SectionLabel number="№ I" label="Catalogue Tous Mandats" />
-            <h1 className="mt-8 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.9] tracking-tightest">
-              Biens choisis,<br />
-              <span className="italic-display text-verdigris-600">vendus</span> avec mesure.
-            </h1>
-          </div>
-          <p className="col-span-12 lg:col-span-5 lg:col-start-8 self-end text-[16px] text-ink/75 leading-relaxed reveal d2">
-            Notre vitrine reste volontairement courte. Chaque bien est défendu
-            par un dossier fiscal complet — pas par un argumentaire.
+      <section className="bg-paper-50 border-b border-ink/10">
+        <div className="mx-auto max-w-screen-3xl px-5 lg:px-10 pt-14 pb-12">
+          <p className="eyebrow">Catalogue Tous Mandats</p>
+          <h1 className="mt-4 font-display font-bold text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] tracking-tightest max-w-3xl">
+            Biens choisis, vendus avec mesure.
+          </h1>
+          <p className="mt-5 max-w-xl text-[15.5px] text-ink/70 leading-relaxed">
+            Notre vitrine reste volontairement courte. Chaque bien est défendu par un dossier
+            fiscal complet — pas par un argumentaire commercial.
           </p>
+
+          {/* Search bar */}
+          <form className="mt-9 grid grid-cols-1 md:grid-cols-12 gap-3 bg-paper border border-ink/10 rounded-2xl p-3 shadow-card">
+            <select className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-orange">
+              <option>Statut · Vente</option>
+              <option>Statut · Location</option>
+            </select>
+            <select className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-orange">
+              <option>Type · Toutes typologies</option>
+              {propertyTypes.map((t) => <option key={t.slug}>{t.name}</option>)}
+            </select>
+            <input className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-orange" placeholder="Ville · Genève" />
+            <button type="button" className="md:col-span-3 rounded-xl bg-ink text-paper px-5 py-3 text-[14px] font-medium hover:bg-orange transition">
+              Rechercher →
+            </button>
+          </form>
         </div>
       </section>
 
-      {/* TYPOLOGIES */}
-      <section className="border-y border-ink/15 bg-bone-50">
-        <div className="mx-auto max-w-screen-3xl px-6 lg:px-12 py-10 flex flex-wrap items-center gap-x-10 gap-y-4 font-mono text-[11px] uppercase tracking-[0.2em]">
-          <span className="text-ink/55">Typologies disponibles —</span>
-          {propertyTypes.map((t) => (
-            <span
-              key={t.slug}
-              className={`flex items-center gap-2 ${t.count > 0 ? "text-ink" : "text-ink/30 line-through decoration-1 decoration-ink/30"}`}
-            >
-              {t.name}
-              <span className="tab-num">[{t.count.toString().padStart(2, "0")}]</span>
+      {/* PROPERTY TYPE TABS */}
+      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 py-12">
+        <ul className="flex flex-wrap gap-2">
+          <li>
+            <span className="inline-flex items-center gap-2 rounded-full bg-ink text-paper px-4 py-2 text-[12px] font-medium">
+              Tous <span className="rounded-full bg-paper/20 px-1.5 text-[10px] tabnum">{properties.length}</span>
             </span>
+          </li>
+          {propertyTypes.map((t) => (
+            <li key={t.slug}>
+              <span className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] border transition ${t.count > 0 ? "border-ink/20 hover:bg-ink hover:text-paper hover:border-ink" : "border-ink/10 text-ink/40"}`}>
+                {t.name}
+                <span className="rounded-full bg-ink/8 px-1.5 text-[10px] tabnum">{t.count.toString().padStart(2, "0")}</span>
+              </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* LISTING */}
-      <section className="mx-auto max-w-screen-3xl px-6 lg:px-12 py-24 lg:py-32">
-        <div className="grid grid-cols-12 gap-x-8 gap-y-16">
-          {properties.map((p, i) => (
-            <Link
-              key={p.slug}
-              href={`/immobilier/${p.slug}`}
-              className="col-span-12 lg:col-span-7 group block"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
-                <Image
-                  src={p.images[0]}
-                  alt={p.title}
-                  fill
-                  className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                />
-                <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-bone/90 backdrop-blur px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-ink">
-                  <span className="h-1.5 w-1.5 rounded-full bg-copper" />
+      <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 pb-20 lg:pb-28">
+        <div className="grid grid-cols-12 gap-5">
+          {properties.map((p) => (
+            <Link key={p.slug} href={`/immobilier/${p.slug}`} className="card group col-span-12 md:col-span-6 lg:col-span-4 block rounded-2xl overflow-hidden bg-paper border border-ink/10 hover:shadow-cardHover">
+              <div className="relative aspect-[4/3] overflow-hidden bg-ink">
+                <Image src={p.images[0]} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" />
+                <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-orange px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-[0.18em] text-paper">
                   {p.status}
-                </div>
+                </span>
+                <span className="absolute top-4 right-4 inline-flex items-center gap-2 rounded-full bg-paper/95 backdrop-blur px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-ink">
+                  {p.type}
+                </span>
               </div>
-              <div className="mt-6 flex items-end justify-between gap-6">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">
-                    {String(i + 1).padStart(2, "0")} · {p.type} · {p.location}
-                  </p>
-                  <h2 className="mt-3 font-display text-[clamp(1.9rem,3vw,2.8rem)] leading-tight tracking-tight">
-                    {p.title}
-                  </h2>
+              <div className="p-6">
+                <p className="text-[12px] font-mono uppercase tracking-[0.16em] text-ink/55">{p.location}</p>
+                <h2 className="mt-2 font-display font-semibold text-[1.3rem] leading-tight tracking-tight">{p.title}</h2>
+                <div className="mt-5 flex items-end justify-between gap-3 border-t border-ink/10 pt-4">
+                  <div>
+                    <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-ink/55">Prix</p>
+                    <p className="mt-1 font-display font-bold text-[1.3rem] tabnum">CHF {p.priceCHF.toLocaleString("fr-CH")}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-ink/55">Surface</p>
+                    <p className="mt-1 font-display font-bold text-[1.3rem] tabnum">{p.surfaces.reduce((a, s) => a + s.habitable, 0)} m²</p>
+                  </div>
                 </div>
-                <span className="font-display text-[1.6rem] tab-num shrink-0">
-                  CHF {p.priceCHF.toLocaleString("fr-CH")}
+                <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-orange-600">
+                  Voir le bien <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
               </div>
             </Link>
           ))}
 
-          {/* "Soon" placeholder card */}
-          <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:self-end">
-            <div className="rounded-2xl border border-ink/20 border-dashed p-8 lg:p-10 min-h-[300px] flex flex-col justify-between bg-bone-50">
-              <SectionLabel number="≈" label="Mandats discrets" />
-              <div>
-                <h3 className="mt-6 font-display text-[1.9rem] leading-tight tracking-tight">
-                  Off-market
-                </h3>
-                <p className="mt-3 text-[14px] text-ink/70 leading-relaxed">
-                  Plusieurs biens sont diffusés exclusivement à notre carnet.
-                  Pour y accéder, prenez contact.
-                </p>
-              </div>
-              <Link
-                href="/contact"
-                className="mt-8 inline-flex items-center gap-2 text-[12px] font-mono tracking-[0.2em] uppercase link"
-              >
-                Demander l'accès →
-              </Link>
+          {/* Off-market card */}
+          <div className="col-span-12 md:col-span-6 lg:col-span-4 rounded-2xl border border-ink/15 border-dashed bg-paper-50 p-8 flex flex-col justify-between min-h-[420px]">
+            <div>
+              <p className="eyebrow">Mandats discrets</p>
+              <h3 className="mt-4 font-display font-bold text-[1.5rem] leading-tight tracking-tight">Biens off-market</h3>
+              <p className="mt-3 text-[14px] text-ink/70 leading-relaxed">
+                Plusieurs biens sont diffusés exclusivement à notre carnet d'acheteurs.
+                Pour y accéder, prenez contact directement avec le cabinet.
+              </p>
             </div>
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-ink text-paper px-5 py-3 text-[13px] font-medium hover:bg-orange transition w-fit">
+              Demander l'accès →
+            </Link>
           </div>
         </div>
       </section>

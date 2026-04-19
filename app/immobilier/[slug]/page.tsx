@@ -38,7 +38,7 @@ export default function PropertyPage({ params }: { params: { slug: string } }) {
         <div className="grid grid-cols-12 gap-6 items-end">
           <div className="col-span-12 lg:col-span-8">
             <div className="flex items-center gap-2">
-              <span className="rounded-full bg-orange px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-paper">{p.status}</span>
+              <span className="rounded-full bg-gold-500 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-ink">{p.status}</span>
               <span className="rounded-full bg-paper border border-ink/15 px-3 py-1 text-[11px] font-mono uppercase tracking-[0.18em] text-ink/70">{p.type}</span>
             </div>
             <h1 className="mt-5 font-display font-bold text-[clamp(2.4rem,5vw,4rem)] leading-[1.02] tracking-tightest">{p.title}</h1>
@@ -83,7 +83,7 @@ export default function PropertyPage({ params }: { params: { slug: string } }) {
                 <Row label="Jardin" value={`${totalGarden} m²`} />
                 <Row label="Mandataire" value={p.author} />
               </ul>
-              <Link href="/contact" className="mt-7 inline-flex w-full justify-center items-center gap-2 rounded-full bg-ink text-paper px-5 py-3 text-[13px] font-medium hover:bg-orange transition">
+              <Link href="/contact" className="mt-7 inline-flex w-full justify-center items-center gap-2 rounded-full bg-ink text-paper px-5 py-3 text-[13px] font-medium hover:bg-gold-500 hover:text-ink transition">
                 Demander une visite →
               </Link>
               <a href="tel:+41786042503" className="mt-3 block text-center text-[13px] text-ink/70 link">
@@ -126,7 +126,7 @@ export default function PropertyPage({ params }: { params: { slug: string } }) {
                   <ul className="mt-4 space-y-2">
                     {b.items.map((it) => (
                       <li key={it} className="flex gap-2.5 text-[13.5px] text-ink/80 leading-relaxed">
-                        <span className="text-orange-600 mt-[3px]">·</span>
+                        <span className="text-gold-700 mt-[3px]">·</span>
                         <span>{it}</span>
                       </li>
                     ))}

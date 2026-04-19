@@ -25,12 +25,12 @@ export default function Nav() {
             href="tel:+41786042503"
             className="hidden sm:inline-flex items-center gap-2 font-sans text-[13px] text-ink/70 hover:text-ink transition"
           >
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-orange" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold-500" />
             +41 78 604 25 03
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-paper hover:bg-orange transition-colors"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-paper hover:bg-gold-500 hover:text-ink transition-colors"
           >
             Contactez-nous
             <span className="transition-transform">→</span>

@@ -24,7 +24,7 @@ export default function EquipePage() {
           {team.map((m, i) => (
             <li key={m.name} className="card rounded-3xl border border-ink/10 bg-paper p-9 flex flex-col gap-7 hover:shadow-cardHover">
               <div className="flex items-start justify-between">
-                <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-orange-50 text-orange-700 font-display font-bold text-[1.6rem]">
+                <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gold-50 text-gold-800 font-display font-bold text-[1.6rem]">
                   {m.initials}
                 </div>
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55 tabnum">
@@ -33,7 +33,7 @@ export default function EquipePage() {
               </div>
               <div>
                 <h2 className="font-display font-bold text-[clamp(1.6rem,2.5vw,2.2rem)] leading-tight tracking-tight">{m.name}</h2>
-                <p className="mt-1.5 text-[13px] text-orange-600 font-medium uppercase tracking-[0.14em]">{m.role}</p>
+                <p className="mt-1.5 text-[13px] text-gold-700 font-medium uppercase tracking-[0.14em]">{m.role}</p>
               </div>
               <p className="text-[15px] leading-relaxed text-ink/75">{m.bio}</p>
               <div className="mt-auto flex flex-wrap items-center gap-5 pt-4 border-t border-ink/10 text-[13px]">
@@ -56,13 +56,13 @@ export default function EquipePage() {
       <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 pb-24">
         <div className="rounded-3xl bg-ink text-paper p-10 lg:p-16 grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-8">
-            <p className="eyebrow text-orange-300">Prêt à démarrer ?</p>
+            <p className="eyebrow text-gold-300">Prêt à démarrer ?</p>
             <h3 className="mt-4 font-display font-bold text-[clamp(2rem,4vw,3.2rem)] leading-[1.05] tracking-tighter">
               Travaillons ensemble.
             </h3>
           </div>
           <div className="col-span-12 lg:col-span-4 flex lg:justify-end">
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-orange px-7 py-3.5 text-[14px] font-medium text-paper hover:bg-orange-600 transition">
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-[14px] font-semibold text-ink hover:bg-ink hover:text-gold-300 transition">
               Prendre rendez-vous →
             </Link>
           </div>

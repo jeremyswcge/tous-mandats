@@ -21,12 +21,12 @@ export default function HomePage() {
         <div className="relative z-10 h-full mx-auto max-w-screen-3xl px-5 lg:px-10 flex flex-col justify-end pb-16 lg:pb-24">
           <div className="reveal d1 max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-paper/15 backdrop-blur px-3.5 py-1.5 text-paper text-[12px] font-mono tracking-[0.16em] uppercase ring-1 ring-paper/20">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange" />
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
               Genève · Perly
             </span>
             <h1 className="mt-6 font-display font-bold text-paper text-[clamp(2.5rem,6vw,5rem)] leading-[1.02] tracking-tightest">
               Optimisez votre fiscalité,<br />
-              valorisez votre <span className="text-orange-300">patrimoine.</span>
+              valorisez votre <span className="text-gold-300">patrimoine.</span>
             </h1>
             <p className="mt-5 text-paper/85 text-[17px] max-w-xl leading-relaxed">
               Cabinet genevois indépendant : déclarations, gain immobilier, comptabilité,
@@ -35,7 +35,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-orange px-7 py-3.5 text-[14px] font-medium text-paper hover:bg-orange-600 transition"
+                className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-[14px] font-semibold text-ink hover:bg-ink hover:text-gold-300 transition"
               >
                 Contactez-nous <span>→</span>
               </Link>
@@ -81,9 +81,9 @@ export default function HomePage() {
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((s) => (
-            <li key={s.title} className="card group rounded-2xl border border-ink/10 bg-paper p-6 hover:shadow-cardHover hover:border-orange/40">
+            <li key={s.title} className="card group rounded-2xl border border-ink/10 bg-paper p-6 hover:shadow-cardHover hover:border-gold-500/40">
               <div className="flex items-center justify-between">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-orange-50 text-orange-600 group-hover:bg-orange group-hover:text-paper transition">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-gold-50 text-gold-700 group-hover:bg-gold-500 group-hover:text-ink transition">
                   <ServiceIcon name={s.icon} />
                 </span>
               </div>
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Link href="/equipe" className="mt-9 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[13px] font-medium text-paper hover:bg-orange transition">
+            <Link href="/equipe" className="mt-9 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[13px] font-medium text-paper hover:bg-gold-500 hover:text-ink transition">
               Rencontrer l'équipe →
             </Link>
           </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
                 <div className="p-7">
                   <h3 className="font-display font-semibold text-[1.4rem] leading-tight">{t.label}</h3>
                   <p className="mt-2 text-[14px] text-ink/65 leading-relaxed">{t.body}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-orange-600">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-gold-700">
                     Démarrer <span className="transition-transform group-hover:translate-x-0.5">→</span>
                   </span>
                 </div>
@@ -207,7 +207,7 @@ export default function HomePage() {
           <div className="grid grid-cols-12">
             <div className="col-span-12 lg:col-span-7 relative aspect-[4/3] lg:aspect-auto lg:min-h-[480px]">
               <Image src={villa.images[0]} alt={villa.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" sizes="(min-width:1024px) 60vw, 100vw" />
-              <span className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-orange px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.18em] text-paper">
+              <span className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-gold-500 px-4 py-1.5 text-[11px] font-mono uppercase tracking-[0.18em] text-ink">
                 {villa.status}
               </span>
             </div>
@@ -247,7 +247,7 @@ export default function HomePage() {
             {team.map((m) => (
               <li key={m.name} className="card rounded-2xl bg-paper border border-ink/10 p-7 hover:shadow-cardHover">
                 <div className="flex items-center gap-4">
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-orange-50 text-orange-700 font-display font-bold text-[1.05rem]">
+                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gold-50 text-gold-800 font-display font-bold text-[1.05rem]">
                     {m.initials}
                   </div>
                   <div>
@@ -257,7 +257,7 @@ export default function HomePage() {
                 </div>
                 <p className="mt-5 text-[13.5px] text-ink/70 leading-relaxed">{m.bio}</p>
                 {m.linkedin && (
-                  <a href={m.linkedin} target="_blank" rel="noreferrer" className="mt-4 inline-block text-[12px] font-mono uppercase tracking-[0.16em] link text-orange-600">
+                  <a href={m.linkedin} target="_blank" rel="noreferrer" className="mt-4 inline-block text-[12px] font-mono uppercase tracking-[0.16em] link text-gold-700">
                     LinkedIn ↗
                   </a>
                 )}
@@ -271,7 +271,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-screen-3xl px-5 lg:px-10 py-20 lg:py-28">
         <div className="rounded-3xl bg-ink text-paper p-10 lg:p-16 grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-7">
-            <p className="eyebrow text-orange-300">Premier rendez-vous offert</p>
+            <p className="eyebrow text-gold-300">Premier rendez-vous offert</p>
             <h2 className="mt-4 font-display font-bold text-[clamp(2rem,4vw,3.4rem)] leading-[1.05] tracking-tighter">
               Parlons de votre patrimoine.
             </h2>
@@ -280,7 +280,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex lg:justify-end">
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-orange px-7 py-3.5 text-[14px] font-medium text-paper hover:bg-orange-600 transition">
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-[14px] font-semibold text-ink hover:bg-ink hover:text-gold-300 transition">
               Démarrer un dossier →
             </Link>
           </div>

@@ -5,7 +5,7 @@
 :root {
   --bg: #FFFFFF;
   --ink: #0F0F10;
-  --orange: #E8743A;
+  --gold: #DCA520;
 }
 
 html, body {
@@ -45,8 +45,8 @@ html, body {
 
 /* Selection */
 ::selection {
-  background: var(--orange);
-  color: #fff;
+  background: var(--gold);
+  color: #0F0F10;
 }
 
 /* Reveal */
@@ -61,7 +61,7 @@ html, body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
 
@@ -85,7 +85,8 @@ html, body {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--gold);
+  font-weight: 600;
   font-weight: 500;
 }
 

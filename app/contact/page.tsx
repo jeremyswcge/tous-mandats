@@ -9,7 +9,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-screen-3xl px-5 lg:px-10 pt-14 pb-12">
           <p className="eyebrow">Premier contact</p>
           <h1 className="mt-4 font-display font-bold text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] tracking-tightest max-w-3xl">
-            Écrivez-nous. <span className="text-orange-600">On répond vite.</span>
+            Écrivez-nous. <span className="text-gold-700">On répond vite.</span>
           </h1>
           <p className="mt-5 max-w-xl text-[15.5px] text-ink/70 leading-relaxed">
             Décrivez votre situation : nous revenons vers vous sous 24 h ouvrées avec une première lecture.
@@ -60,7 +60,7 @@ export default function ContactPage() {
                   name="message"
                   rows={6}
                   placeholder="Décrivez brièvement votre situation et vos échéances…"
-                  className="w-full rounded-2xl border border-ink/15 bg-paper-50 px-5 py-4 text-[15px] focus:outline-none focus:ring-2 focus:ring-orange placeholder:text-ink/40"
+                  className="w-full rounded-2xl border border-ink/15 bg-paper-50 px-5 py-4 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold-500 placeholder:text-ink/40"
                 />
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function ContactPage() {
               </p>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-full bg-orange px-7 py-3.5 text-[14px] font-medium text-paper hover:bg-orange-600 transition"
+                className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-[14px] font-semibold text-ink hover:bg-ink hover:text-gold-300 transition"
               >
                 Envoyer la demande →
               </button>
@@ -81,11 +81,11 @@ export default function ContactPage() {
           {/* SIDEBAR */}
           <aside className="col-span-12 lg:col-span-4 lg:col-start-9 space-y-4">
             <div className="rounded-3xl bg-ink text-paper p-7">
-              <p className="eyebrow text-orange-300">Téléphone</p>
+              <p className="eyebrow text-gold-300">Téléphone</p>
               <ul className="mt-4 space-y-2 font-display font-bold text-[1.4rem]">
                 {company.phones.map((p) => (
                   <li key={p}>
-                    <a href={`tel:${p.replace(/\s+/g, "")}`} className="hover:text-orange-300 transition">{p}</a>
+                    <a href={`tel:${p.replace(/\s+/g, "")}`} className="hover:text-gold-300 transition">{p}</a>
                   </li>
                 ))}
               </ul>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                 href="https://www.google.com/maps/search/?api=1&query=Route+de+St-Julien+299B+1258+Perly"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-block text-[12px] font-mono uppercase tracking-[0.18em] link text-orange-600"
+                className="mt-3 inline-block text-[12px] font-mono uppercase tracking-[0.18em] link text-gold-700"
               >
                 Itinéraire ↗
               </a>
@@ -134,7 +134,7 @@ function Field({ label, name, type = "text", className = "", autoComplete }: { l
         type={type}
         name={name}
         autoComplete={autoComplete}
-        className="mt-2.5 w-full rounded-2xl border border-ink/15 bg-paper-50 px-5 py-3.5 text-[15px] focus:outline-none focus:ring-2 focus:ring-orange"
+        className="mt-2.5 w-full rounded-2xl border border-ink/15 bg-paper-50 px-5 py-3.5 text-[15px] focus:outline-none focus:ring-2 focus:ring-gold-500"
       />
     </label>
   );

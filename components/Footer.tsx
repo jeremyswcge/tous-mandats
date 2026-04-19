@@ -15,7 +15,7 @@ export default function Footer() {
             </p>
             <Link
               href="/contact"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-orange px-5 py-2.5 text-[13px] font-medium text-paper hover:bg-orange-600 transition"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-gold-500 px-5 py-2.5 text-[13px] font-semibold text-ink hover:bg-ink hover:text-gold-300 transition"
             >
               Prendre rendez-vous →
             </Link>

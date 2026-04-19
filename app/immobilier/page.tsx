@@ -20,16 +20,16 @@ export default function ImmobilierPage() {
 
           {/* Search bar */}
           <form className="mt-9 grid grid-cols-1 md:grid-cols-12 gap-3 bg-paper border border-ink/10 rounded-2xl p-3 shadow-card">
-            <select className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-orange">
+            <select className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-gold-500">
               <option>Statut · Vente</option>
               <option>Statut · Location</option>
             </select>
-            <select className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-orange">
+            <select className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-gold-500">
               <option>Type · Toutes typologies</option>
               {propertyTypes.map((t) => <option key={t.slug}>{t.name}</option>)}
             </select>
-            <input className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-orange" placeholder="Ville · Genève" />
-            <button type="button" className="md:col-span-3 rounded-xl bg-ink text-paper px-5 py-3 text-[14px] font-medium hover:bg-orange transition">
+            <input className="md:col-span-3 rounded-xl bg-paper-50 border border-ink/10 px-4 py-3 text-[14px] focus:outline-none focus:ring-2 focus:ring-gold-500" placeholder="Ville · Genève" />
+            <button type="button" className="md:col-span-3 rounded-xl bg-ink text-paper px-5 py-3 text-[14px] font-medium hover:bg-gold-500 hover:text-ink transition">
               Rechercher →
             </button>
           </form>
@@ -62,7 +62,7 @@ export default function ImmobilierPage() {
             <Link key={p.slug} href={`/immobilier/${p.slug}`} className="card group col-span-12 md:col-span-6 lg:col-span-4 block rounded-2xl overflow-hidden bg-paper border border-ink/10 hover:shadow-cardHover">
               <div className="relative aspect-[4/3] overflow-hidden bg-ink">
                 <Image src={p.images[0]} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" />
-                <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-orange px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-[0.18em] text-paper">
+                <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-gold-500 px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-[0.18em] text-ink">
                   {p.status}
                 </span>
                 <span className="absolute top-4 right-4 inline-flex items-center gap-2 rounded-full bg-paper/95 backdrop-blur px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.16em] text-ink">
@@ -82,7 +82,7 @@ export default function ImmobilierPage() {
                     <p className="mt-1 font-display font-bold text-[1.3rem] tabnum">{p.surfaces.reduce((a, s) => a + s.habitable, 0)} m²</p>
                   </div>
                 </div>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-orange-600">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-gold-700">
                   Voir le bien <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
               </div>
@@ -99,7 +99,7 @@ export default function ImmobilierPage() {
                 Pour y accéder, prenez contact directement avec le cabinet.
               </p>
             </div>
-            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-ink text-paper px-5 py-3 text-[13px] font-medium hover:bg-orange transition w-fit">
+            <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-ink text-paper px-5 py-3 text-[13px] font-medium hover:bg-gold-500 hover:text-ink transition w-fit">
               Demander l'accès →
             </Link>
           </div>
